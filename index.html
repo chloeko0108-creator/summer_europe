@@ -261,7 +261,7 @@
                     { type: 'transit', title: '前往科爾馬', transport: '火車', from: '斯特拉斯堡車站', to: '科爾馬車站 (Gare de Colmar)', line: 'TER', duration: '30 分鐘' },
                     { type: 'transit', title: '前往市區', transport: '步行', from: '科爾馬車站', to: '普菲斯特屋', line: '步行' },
                     { type: 'location', title: '普菲斯特屋', address: 'Maison Pfister, Colmar', desc: '造訪《霍爾的移動城堡》原型。' },
-                    { type: 'location', title: '小威尼斯區遊船 (La Petite Venice)', address: 'Saint-Pierre bridge, Colmar', desc: '搭乘平底船慢遊運河。費用: 每人7歐元。營業時間: 09:45–11:45、13:45–18:45。' },
+                    { type: 'location', title: '小威尼斯區遊船 (La Petite Venice)', address: 'Saint-Pierre bridge, Colmar', desc: '搭船地點：Saint-Pierre bridge的橋下。費用: 每人7歐元。營業時間: 09:45–11:45、13:45–18:45。官網: www.barques-colmar.fr/' },
                     { type: 'transit', title: '返回斯特拉斯堡', transport: '火車', from: '科爾馬車站', to: '斯特拉斯堡車站', line: 'TER' },
                     { type: 'transit', title: '返回 Airbnb', transport: '輕軌', from: '斯特拉斯堡車站', to: 'Airbnb (Rue de Molsheim)', line: 'Tram' }
                 ]
@@ -441,6 +441,64 @@
             }
         ];
 
+        const SAVED_SPOTS = [
+            {
+                name: 'Maison Kammerzell',
+                type: 'restaurant',
+                city: '斯特拉斯堡',
+                rating: '4.5',
+                cuisine: '阿爾薩斯傳統菜',
+                tags: ['百年古蹟', '酸菜豬腳'],
+                address: '16 Place de la Cathédrale, 67000 Strasbourg',
+                hours: '12:00 - 14:30, 19:00 - 22:30',
+                note: '就在大教堂旁，建築本身是絕美木筋屋，必吃傳統酸菜豬腳。'
+            },
+            {
+                name: 'Hausbrauerei Feierling',
+                type: 'restaurant',
+                city: '弗萊堡',
+                rating: '4.6',
+                cuisine: '巴登菜 / 啤酒館',
+                tags: ['在地精釀', '露天啤酒花園'],
+                address: 'Gerberau 46, 79098 Freiburg im Breisgau',
+                hours: '11:00 - 00:00',
+                note: '在小水渠旁，天氣好時一定要坐在戶外花園喝新鮮釀造的啤酒。'
+            },
+            {
+                name: 'Chez Léon',
+                type: 'restaurant',
+                city: '布魯塞爾',
+                rating: '4.2',
+                cuisine: '比利時海鮮',
+                tags: ['淡菜鍋', '國民美食'],
+                address: 'Rue des Bouchers 18, 1000 Bruxelles',
+                hours: '11:30 - 23:00',
+                note: '布魯塞爾最有名的淡菜鍋專賣店，份量大適合分享。'
+            },
+            {
+                name: 'The Seafood Bar',
+                type: 'restaurant',
+                city: '阿姆斯特丹',
+                rating: '4.7',
+                cuisine: '現代海鮮',
+                tags: ['海鮮拼盤', '氣氛佳'],
+                address: 'Spui 15, 1012 WX Amsterdam',
+                hours: '12:00 - 22:30',
+                note: '非常熱門的現代海鮮吧，海鮮塔跟生蠔必點，建議提早訂位。'
+            },
+            {
+                name: 'Augustiner-Keller',
+                type: 'restaurant',
+                city: '慕尼黑',
+                rating: '4.6',
+                cuisine: '巴伐利亞菜',
+                tags: ['超大啤酒花園', '烤豬腳'],
+                address: 'Arnulfstraße 52, 80335 München',
+                hours: '10:00 - 00:00',
+                note: '慕尼黑最經典的啤酒花園之一，氣氛極佳，適合晚上大口吃肉喝酒。'
+            }
+        ];
+
         const EventCard = ({ event, city }) => {
             const [expanded, setExpanded] = useState(false);
             
@@ -454,12 +512,12 @@
                                 
                                 <div className="text-[14px] font-bold text-[#003049]">{event.from}</div>
                                 <div className="flex items-center text-[12px] font-bold text-[#7D1128]">
-                                    <i className={`fas fa-${event.transport === '步行' ? 'walking' : (event.transport.includes('火車') || event.transport.includes('高鐵') ? 'train' : 'bus')} mr-2`}></i>
+                                    <i className={`fas fa-${event.transport === '步行' ? 'walking' : (event.transport.includes('火車') || event.transport.includes('高鐵') ? 'train' : (event.transport.includes('渡輪') ? 'ship' : 'bus'))} mr-2`}></i>
                                     {event.line}
                                 </div>
                                 <div className="text-[14px] font-bold text-[#003049]">{event.to}</div>
                             </div>
-                            <a href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(getNavAddress(event.from, city))}&destination=${encodeURIComponent(getNavAddress(event.to, city))}`} target="_blank" className="bg-[#E9D8A6] p-2.5 rounded-full shadow hover:bg-[#EE9B00] transition ml-3" onClick={(e) => e.stopPropagation()}>
+                            <a href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(getNavAddress(event.from, city))}&destination=${encodeURIComponent(getNavAddress(event.to, city))}`} target="_blank" className="bg-[#E9D8A6] p-2.5 rounded-full shadow hover:bg-[#EE9B00] transition ml-3 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
                                 <i className="fas fa-location-arrow text-[#003049]"></i>
                             </a>
                         </div>
@@ -615,6 +673,58 @@
             </div>
         );
 
+        const SavedCard = ({ spot }) => {
+            const [expanded, setExpanded] = useState(false);
+            return (
+                <div className="bg-white/65 backdrop-blur-md rounded-[24px] border border-white/60 shadow-[0_8px_32px_rgba(120,194,196,0.15)] mb-4 p-4 glass-card cursor-pointer" onClick={() => setExpanded(!expanded)}>
+                    <div className="flex justify-between items-start mb-2">
+                        <div className="flex items-start flex-1 pr-2">
+                            <div className="w-10 h-10 rounded-full bg-[#0A9396] flex items-center justify-center flex-shrink-0 shadow-inner mt-1">
+                                <i className={`fas fa-utensils text-white`}></i>
+                            </div>
+                            <div className="ml-3">
+                                <h3 className="font-bold text-[16px] text-[#003049] leading-tight mb-1">{spot.name}</h3>
+                                <div className="flex items-center text-[12px] font-bold text-slate-500 mb-1">
+                                    <span className="text-[#EE9B00] mr-1"><i className="fas fa-star"></i> {spot.rating}</span>
+                                    <span className="mx-1.5">•</span>
+                                    <span>{spot.cuisine}</span>
+                                    <span className="mx-1.5">•</span>
+                                    <span>{spot.city}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.address)}`} target="_blank" className="bg-[#E9D8A6] p-2.5 rounded-full shadow hover:bg-[#EE9B00] transition flex-shrink-0 mt-0.5" onClick={(e) => e.stopPropagation()}>
+                            <i className="fas fa-map-pin text-[#003049]"></i>
+                        </a>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-1.5 mb-2 ml-[52px]">
+                        {spot.tags.map((tag, idx) => (
+                            <span key={idx} className="bg-white/50 text-[#005F73] text-[10px] font-bold px-2 py-0.5 rounded-full border border-white/40">{tag}</span>
+                        ))}
+                    </div>
+
+                    {expanded && (
+                        <div className="mt-4 ml-[52px] pt-3 border-t border-white/50 space-y-2">
+                            <div className="text-[12px] font-medium text-slate-700 flex items-start">
+                                <i className="fas fa-map-marker-alt text-[#C1121F] w-4 text-center mt-1 mr-1.5 flex-shrink-0"></i>
+                                <span>{spot.address}</span>
+                            </div>
+                            <div className="text-[12px] font-medium text-slate-700 flex items-start">
+                                <i className="far fa-clock text-[#005F73] w-4 text-center mt-0.5 mr-1.5 flex-shrink-0"></i>
+                                <span>{spot.hours}</span>
+                            </div>
+                            {spot.note && (
+                                <div className="bg-white/40 p-2.5 rounded-[12px] text-[12px] text-[#003049] font-medium leading-relaxed mt-2 border border-white/30">
+                                    <i className="fas fa-pen text-[#EE9B00] mr-1.5"></i>{spot.note}
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+            )
+        };
+
         const TripView = () => (
             <div className="p-4 pt-8 pb-32">
                 <h1 className="text-2xl font-bold text-[#003049] mb-6 drop-shadow-sm">旅程與交通</h1>
@@ -730,12 +840,8 @@
 
         const SavedView = () => (
             <div className="p-4 pt-8 pb-32">
-                <h1 className="text-2xl font-bold text-[#003049] mb-6 drop-shadow-sm">口袋名單</h1>
-                <div className="bg-white/50 backdrop-blur-md rounded-[24px] border border-white/60 p-8 text-center glass-card">
-                    <i className="fas fa-bookmark text-4xl text-[#0A9396] mb-4 opacity-80"></i>
-                    <h3 className="text-[16px] font-bold text-[#003049] mb-2">尚無收藏的景點或餐廳</h3>
-                    <p className="text-[13px] text-slate-600 font-medium">您可以在瀏覽地圖或資訊時，將喜歡的地點加入口袋名單。</p>
-                </div>
+                <h1 className="text-2xl font-bold text-[#003049] mb-6 drop-shadow-sm">口袋名單與精選餐廳</h1>
+                {SAVED_SPOTS.map((spot, i) => <SavedCard key={i} spot={spot} />)}
             </div>
         );
 
