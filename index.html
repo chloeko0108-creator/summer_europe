@@ -92,58 +92,187 @@
         // 注意：圖示部分改存字串，對應 Lucide Icon 的名稱
         const ITINERARY = [
             { day: 'Day 1', date: '7月23 (四)', city: '弗萊堡', events: [
-                { time: '07:15', title: '抵達法蘭克福轉乘', type: 'transport', icon: 'train', desc: '法蘭克福機場轉乘 ICE 高鐵直達弗萊堡。', isLong: true, transportDetails: { boarding: 'Frankfurt(M) Flughafen Fernbf', line: 'ICE 高鐵', direction: 'Basel SBB', alighting: 'Freiburg(Breisgau) Hbf' } },
-                { time: '09:30', title: '前往飯店寄放行李', type: 'transport', icon: 'footprints', desc: '出站後步行前往阿達吉奧公寓酒店。', transportDetails: { boarding: '弗萊堡中央車站', line: '步行約 15 分鐘', direction: 'Eugen Martin Strasse', alighting: 'Aparthotel Adagio (飯店)' } },
-                { time: '10:00', title: '前往老城區', type: 'transport', icon: 'train', desc: '從飯店搭乘輕軌前往市中心。', transportDetails: { boarding: '飯店周邊車站', line: 'Tram 4', direction: 'Zähringen', alighting: '老城區' } },
-                { time: '下午', title: '弗萊堡老城區', type: 'culture', icon: 'building', desc: '漫步老城區、欣賞特有【小水渠】，參觀必到【弗萊堡大教堂】。', locationDetails: { address: 'Münsterplatz, 79098 Freiburg, Germany' } },
-                { time: '17:30', title: '前往音樂節會場', type: 'transport', icon: 'bus', desc: '搭乘市區輕軌轉乘活動免費接駁車。', transportDetails: { boarding: '市區任一輕軌站', line: 'Tram 1 轉 接駁公車', direction: 'Mundenhof', alighting: 'ZMF 帳篷音樂節會場' } },
-                { time: '晚上', title: '帳篷音樂節 (ZMF)', type: 'festival', icon: 'music', desc: '前往 Mundenhof 園區，在免費戶外區喝啤酒、聽音樂放鬆。', locationDetails: { address: 'Mundenhof-Gelände, 79111 Freiburg' } },
-                { time: '23:00', title: '返回飯店休息', type: 'transport', icon: 'train', desc: '搭乘接駁車轉輕軌返回飯店。', transportDetails: { boarding: 'ZMF 帳篷音樂節會場', line: '接駁公車 轉 Tram', direction: '市區方向', alighting: 'Aparthotel Adagio (飯店)' } }
+                { time: '07:15', title: '抵達法蘭克福轉乘', type: 'transport', icon: 'train', desc: '抵達法蘭克福機場，轉乘 ICE 高鐵直達弗萊堡（約 2 小時）。', isLong: true, transportDetails: { boarding: 'Frankfurt(M) Flughafen Fernbf', line: 'ICE 高鐵', direction: 'Basel SBB', alighting: 'Freiburg(Breisgau) Hbf' } },
+                { time: '抵達', title: '前往飯店寄放行李', type: 'transport', icon: 'luggage', desc: '抵達弗萊堡，步行前往車站北側的阿達吉奧公寓酒店寄放行李。', transportDetails: { boarding: 'Freiburg Hbf', line: '步行 5 分鐘', direction: '飯店', alighting: '弗萊堡飯店' } },
+                { time: '隨後', title: '前往老城區', type: 'transport', icon: 'train', desc: '從飯店搭乘輕軌或步行前往弗萊堡老城區。', transportDetails: { boarding: '弗萊堡飯店', line: '輕軌 (Tram) 或步行', direction: '市中心', alighting: '老城區' } },
+                { time: '下午', title: '弗萊堡老城區', type: 'culture', icon: 'building', desc: '漫步老城區、欣賞特有【小水渠】，參觀必到【弗萊堡大教堂】。', locationDetails: { address: 'Münsterplatz, 79098 Freiburg' } },
+                { time: '傍晚', title: '前往音樂節會場', type: 'transport', icon: 'bus', desc: '搭乘輕軌至指定站點轉乘音樂節專屬接駁公車。', transportDetails: { boarding: '市區車站', line: '1號輕軌轉接駁公車', direction: 'Mundenhof', alighting: 'Mundenhof-Gelände' } },
+                { time: '晚上', title: '帳篷音樂節 (ZMF)', type: 'festival', icon: 'music', desc: '前往 Mundenhof 園區參加帳篷音樂節，在免費戶外區喝啤酒、聽音樂放鬆。', locationDetails: { address: 'Mundenhof-Gelände, 79111 Freiburg' } },
+                { time: '晚上', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '活動結束後，搭乘接駁車轉輕軌返回車站旁的飯店休息。', transportDetails: { boarding: 'Mundenhof-Gelände', line: '接駁車轉輕軌', direction: 'Freiburg Hbf', alighting: '弗萊堡飯店' } }
             ]},
             { day: 'Day 2', date: '7月24 (五)', city: '弗萊堡', events: [
-                { time: '09:00', title: '出發前往市集', type: 'transport', icon: 'train', desc: '從飯店搭乘輕軌至大教堂廣場。', transportDetails: { boarding: 'Aparthotel Adagio (飯店)', line: 'Tram 4', direction: '市區方向', alighting: '大教堂廣場' } },
-                { time: '上午', title: '大教堂廣場市集 & 纜車', type: 'nature', icon: 'sun', desc: '品嚐在地小吃，搭【Schlossberg 纜車】上城堡山俯瞰黑森林風光。', locationDetails: { address: 'Schlossbergbahn, 79098 Freiburg' } },
-                { time: '中午', title: '漫步至文青區', type: 'transport', icon: 'footprints', desc: '沿著黑森林特有的小水渠 (Bächle) 散步前往漁夫角。', transportDetails: { boarding: 'Schlossberg 纜車站', line: '市區步行', direction: '沿著河道與水渠', alighting: 'Insel 漁夫角' } },
-                { time: '下午', title: '漁夫角 (Insel)', type: 'culture', icon: 'camera', desc: '探訪舊水車與手工藝店聚集的文青祕境。', locationDetails: { address: 'Insel, 79098 Freiburg' } },
-                { time: '晚上', title: '老城晚餐', type: 'art', icon: 'utensils', desc: '在老城享用巴登地方菜與黑森林蛋糕。', locationDetails: { address: 'Freiburg Old Town' } },
-                { time: '21:30', title: '返回飯店', type: 'transport', icon: 'train', desc: '晚餐後搭乘輕軌回飯店。', transportDetails: { boarding: '老城區', line: 'Tram 4', direction: '飯店方向', alighting: 'Aparthotel Adagio (飯店)' } }
+                { time: '早上', title: '從飯店出發', type: 'transport', icon: 'footprints', desc: '從飯店步行或搭乘輕軌前往大教堂廣場。', transportDetails: { boarding: '弗萊堡飯店', line: '輕軌或步行', direction: '大教堂', alighting: '大教堂廣場' } },
+                { time: '上午', title: '大教堂廣場市集 & 纜車', type: 'nature', icon: 'sun', desc: '逛大教堂廣場市集品嚐在地小吃，隨後搭 Schlossberg 纜車上城堡山俯瞰黑森林風光。', locationDetails: { address: 'Schlossbergbahn, 79098 Freiburg' } },
+                { time: '隨後', title: '散步至漁夫角', type: 'transport', icon: 'footprints', desc: '下山後，悠閒漫步前往漁夫角。', transportDetails: { boarding: 'Schlossberg 纜車站', line: '步行 10 分鐘', direction: '漁夫角', alighting: 'Insel' } },
+                { time: '下午', title: '漁夫角 (Insel)', type: 'culture', icon: 'camera', desc: '探訪舊水車與手工藝店聚集的文青祕境漁夫角。', locationDetails: { address: 'Insel, 79098 Freiburg' } },
+                { time: '傍晚', title: '前往餐廳', type: 'transport', icon: 'footprints', desc: '從漁夫角漫步回老城區享用晚餐。', transportDetails: { boarding: '漁夫角', line: '步行 5 分鐘', direction: '老城區餐廳', alighting: '老城區' } },
+                { time: '晚上', title: '老城晚餐或音樂會', type: 'art', icon: 'utensils', desc: '可安排 ZMF 付費大帳篷音樂會，或在老城享用巴登地方菜。', locationDetails: { address: 'Freiburg Old Town' } },
+                { time: '晚上', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '晚餐後，漫步或搭乘輕軌返回飯店休息。', transportDetails: { boarding: '老城區', line: '輕軌或步行 15 分鐘', direction: '飯店', alighting: '弗萊堡飯店' } }
             ]},
             { day: 'Day 3', date: '7月25 (六)', city: '斯特拉斯堡', events: [
-                { time: '08:30', title: '前往車站 (退房)', type: 'transport', icon: 'footprints', desc: '退房後步行至弗萊堡車站。', transportDetails: { boarding: 'Aparthotel Adagio (飯店)', line: '步行', direction: '車站', alighting: 'Freiburg Hbf' } },
-                { time: '上午', title: '跨國火車前往法國', type: 'transport', icon: 'train', desc: '搭乘火車跨越邊境前往斯特拉斯堡（約 1.5 小時）。', isLong: true, transportDetails: { boarding: 'Freiburg(Breisgau) Hbf', line: 'TER / ICE', direction: 'Strasbourg-Ville', alighting: 'Strasbourg-Ville' } },
-                { time: '12:00', title: '前往 Airbnb 寄放行李', type: 'transport', icon: 'footprints', desc: '從車站步行約 10 分鐘前往 Airbnb。', transportDetails: { boarding: 'Strasbourg-Ville', line: '步行約 10 分鐘', direction: 'Rue de Molsheim', alighting: 'Airbnb (Rue de Molsheim)' } },
-                { time: '13:00', title: '前往小法國區', type: 'transport', icon: 'footprints', desc: '從 Airbnb 步行前往市區觀光。', transportDetails: { boarding: 'Airbnb', line: '市區步行', direction: '小法國區', alighting: '小法國區' } },
-                { time: '下午', title: '小法國區 & 主教座堂', type: 'culture', icon: 'building', desc: '參觀必到【斯特拉斯堡主教座堂】，穿梭木筋屋與文創小店。', locationDetails: { address: 'Pl. de la Cathédrale, 67000 Strasbourg' } },
-                { time: '21:30', title: '前往教堂廣場', type: 'transport', icon: 'footprints', desc: '晚餐後步行至教堂廣場周邊卡位。', transportDetails: { boarding: '小法國區/老城區', line: '市區步行', direction: '大教堂方向', alighting: 'Place de la Cathédrale' } },
-                { time: '22:00', title: '大教堂夏日燈光秀', type: 'festival', icon: 'moon', desc: '於大教堂廣場觀賞夏季限定、完全免費的燈光秀。', locationDetails: { address: 'Pl. de la Cathédrale, 67000 Strasbourg' } },
-                { time: '23:30', title: '返回 Airbnb', type: 'transport', icon: 'bus', desc: '欣賞完燈光秀後，搭乘大眾交通返回住處。', transportDetails: { boarding: '主教座堂廣場', line: '路面電車/公車', direction: 'Rue de Molsheim', alighting: 'Airbnb (Rue de Molsheim)' } }
+                { time: '早上', title: '退房與前往車站', type: 'transport', icon: 'footprints', desc: '辦理退房，輕鬆步行至弗萊堡中央車站準備跨國。', transportDetails: { boarding: '弗萊堡飯店', line: '步行 5 分鐘', direction: '車站', alighting: 'Freiburg Hbf' } },
+                { time: '上午', title: '跨國火車前往法國', type: 'transport', icon: 'train', desc: '搭乘火車跨越邊境前往法國斯特拉斯堡（約 1.5 小時）。', isLong: true, transportDetails: { boarding: 'Freiburg(Breisgau) Hbf', line: 'TER / ICE', direction: 'Strasbourg', alighting: 'Strasbourg-Ville' } },
+                { time: '抵達', title: 'Airbnb 寄放行李', type: 'transport', icon: 'luggage', desc: '抵達後，步行前往車站附近的 Airbnb 寄放行李 (Rue de Molsheim)。', transportDetails: { boarding: 'Strasbourg-Ville', line: '步行約 10-15 分鐘', direction: '斯特拉斯堡 Airbnb', alighting: '斯特拉斯堡 Airbnb' } },
+                { time: '中午', title: '前往市區', type: 'transport', icon: 'train', desc: '放好行李後，搭乘輕軌或步行前往大教堂與小法國區周邊。', transportDetails: { boarding: '斯特拉斯堡 Airbnb', line: '輕軌 Tram A/D 或步行', direction: '市中心', alighting: 'Langstross Grand\'Rue' } },
+                { time: '下午', title: '主教座堂 & 小法國區', type: 'culture', icon: 'building', desc: '參觀必到斯特拉斯堡主教座堂，隨後穿梭小法國區木筋屋與文創小店。', locationDetails: { address: 'Pl. de la Cathédrale, 67000 Strasbourg' } },
+                { time: '晚上', title: '前往大教堂廣場', type: 'transport', icon: 'footprints', desc: '吃飽後散步至大教堂廣場等待燈光秀。', transportDetails: { boarding: '小法國區', line: '步行 8 分鐘', direction: '大教堂', alighting: '大教堂廣場' } },
+                { time: '22:00', title: '大教堂夏日燈光秀', type: 'festival', icon: 'moon', desc: '於大教堂廣場觀賞夏季限定、完全免費的大教堂夏日燈光秀。', locationDetails: { address: 'Pl. de la Cathédrale, 67000 Strasbourg' } },
+                { time: '結束', title: '返回 Airbnb 休息', type: 'transport', icon: 'home', desc: '看完燈光秀後，搭乘輕軌或散步返回 Airbnb。', transportDetails: { boarding: '大教堂廣場', line: '輕軌 Tram A/D', direction: '斯特拉斯堡 Airbnb', alighting: '斯特拉斯堡 Airbnb' } }
             ]},
             { day: 'Day 4', date: '7月26 (日)', city: '科爾馬', events: [
-                { time: '09:00', title: '前往車站', type: 'transport', icon: 'footprints', desc: '從 Airbnb 步行前往斯特拉斯堡車站。', transportDetails: { boarding: 'Airbnb', line: '步行', direction: 'Strasbourg-Ville', alighting: 'Strasbourg-Ville' } },
-                { time: '上午', title: '火車至科爾馬', type: 'transport', icon: 'train', desc: '搭法鐵區間車(30分)至科爾馬。', transportDetails: { boarding: 'Strasbourg-Ville', line: 'TER', direction: 'Colmar', alighting: 'Gare de Colmar' } },
-                { time: '10:30', title: '前往童話小鎮', type: 'transport', icon: 'footprints', desc: '從車站步行約15分鐘進入老城區。', transportDetails: { boarding: 'Gare de Colmar', line: '步行或市區公車', direction: '老城區', alighting: '老城區入口' } },
-                { time: '中午', title: '科爾馬童話之旅', type: 'culture', icon: 'building', desc: '造訪《霍爾的移動城堡》原型【普菲斯特屋】與特色木筋屋。', locationDetails: { address: '11 Rue des Marchands, 68000 Colmar' } },
-                { time: '下午', title: '小威尼斯區遊船', type: 'nature', icon: 'map', desc: '搭船慢遊運河。搭船地點：Saint-Pierre bridge橋下。', locationDetails: { address: 'Pont Saint-Pierre, 68000 Colmar' } },
-                { time: '18:00', title: '搭車返回斯特拉斯堡', type: 'transport', icon: 'train', desc: '結束一日遊，搭乘火車返回斯特拉斯堡。', transportDetails: { boarding: 'Gare de Colmar', line: 'TER 區域火車', direction: 'Strasbourg-Ville', alighting: 'Strasbourg-Ville' } },
-                { time: '19:00', title: '返回 Airbnb', type: 'transport', icon: 'footprints', desc: '抵達車站後步行回民宿。', transportDetails: { boarding: 'Strasbourg-Ville', line: '步行', direction: 'Rue de Molsheim', alighting: 'Airbnb' } }
+                { time: '早上', title: '從 Airbnb 出發', type: 'transport', icon: 'footprints', desc: '從 Airbnb 步行前往斯特拉斯堡車站，準備前往科爾馬。', transportDetails: { boarding: '斯特拉斯堡 Airbnb', line: '步行 10-15 分鐘', direction: 'Strasbourg-Ville', alighting: 'Strasbourg-Ville' } },
+                { time: '上午', title: '火車至科爾馬', type: 'transport', icon: 'train', desc: '搭火車（30 分鐘）至科爾馬車站。', transportDetails: { boarding: 'Strasbourg-Ville', line: 'TER', direction: 'Colmar', alighting: 'Gare de Colmar' } },
+                { time: '隨後', title: '步行前往老城', type: 'transport', icon: 'footprints', desc: '從車站悠閒步行前往科爾馬老城中心。', transportDetails: { boarding: 'Gare de Colmar', line: '步行 15 分鐘', direction: '老城區', alighting: '普菲斯特屋' } },
+                { time: '近中午', title: '普菲斯特屋', type: 'culture', icon: 'home', desc: '造訪《霍爾的移動城堡》原型普菲斯特屋。', locationDetails: { address: '11 Rue des Marchands, 68000 Colmar' } },
+                { time: '隨後', title: '散步至小威尼斯', type: 'transport', icon: 'footprints', desc: '穿梭於童話街道，步行前往小威尼斯區。', transportDetails: { boarding: '普菲斯特屋', line: '步行 5 分鐘', direction: '小威尼斯', alighting: '運河遊船碼頭' } },
+                { time: '下午', title: '小威尼斯區遊船', type: 'nature', icon: 'map', desc: '在小威尼斯區搭乘平底船慢遊運河，隨後在舊海關廣場喝阿爾薩斯白酒享受午後。', locationDetails: { address: 'Pont Saint-Pierre, 68000 Colmar' } },
+                { time: '傍晚', title: '搭車返回斯特拉斯堡', type: 'transport', icon: 'train', desc: '結束科爾馬行程，步行至車站搭車返回斯特拉斯堡。', transportDetails: { boarding: 'Gare de Colmar', line: 'TER 區間車', direction: 'Strasbourg', alighting: 'Strasbourg-Ville' } },
+                { time: '晚上', title: '返回 Airbnb 休息', type: 'transport', icon: 'home', desc: '抵達斯特拉斯堡車站後，步行返回 Airbnb。', transportDetails: { boarding: 'Strasbourg-Ville', line: '步行 10-15 分鐘', direction: '斯特拉斯堡 Airbnb', alighting: '斯特拉斯堡 Airbnb' } }
             ]},
             { day: 'Day 5', date: '7月27 (一)', city: '斯特拉斯堡', events: [
-                { time: '09:30', title: '前往碼頭', type: 'transport', icon: 'footprints', desc: '從 Airbnb 散步至伊爾河觀光船碼頭。', transportDetails: { boarding: 'Airbnb', line: '步行或市區輕軌', direction: '大教堂周邊', alighting: 'Batorama 乘船處' } },
-                { time: '上午', title: '伊爾河觀光船', type: 'relax', icon: 'palmtree', desc: '慢遊老城與現代歐洲議會區。', locationDetails: { address: 'Place du Marché aux Poissons, Strasbourg' } },
-                { time: '14:00', title: '前往現代藝術區', type: 'transport', icon: 'bus', desc: '搭乘市區輕軌前往當代藝術博物館。', transportDetails: { boarding: 'Langstross Grand\'Rue', line: 'Tram B 或 C', direction: 'Montagne Verte', alighting: 'Musée d\'Art Moderne' } },
-                { time: '下午', title: '當代藝術博物館', type: 'art', icon: 'camera', desc: '參觀 MAMCS，在頂樓露台咖啡廳遠眺沃邦攔河壩。', locationDetails: { address: '1 Pl. Hans-Jean-Arp, 67000 Strasbourg' } },
-                { time: '傍晚', title: '返回 Airbnb', type: 'transport', icon: 'footprints', desc: '參觀完後，慢慢散步回住處。', transportDetails: { boarding: 'MAMCS 藝術博物館', line: '步行', direction: 'Rue de Molsheim', alighting: 'Airbnb' } }
+                { time: '早上', title: '從 Airbnb 出發', type: 'transport', icon: 'footprints', desc: '從住處步行前往伊爾河碼頭準備搭船。', transportDetails: { boarding: '斯特拉斯堡 Airbnb', line: '步行 15-20 分鐘', direction: '碼頭', alighting: 'Place du Marché aux Poissons' } },
+                { time: '上午', title: '伊爾河觀光船', type: 'relax', icon: 'ship', desc: '搭乘伊爾河觀光船慢遊老城與現代歐洲議會區。', locationDetails: { address: 'Place du Marché aux Poissons, Strasbourg' } },
+                { time: '中午', title: '前往當代藝術博物館', type: 'transport', icon: 'footprints', desc: '沿著河畔漫步或搭乘輕軌前往當代藝術博物館。', transportDetails: { boarding: '伊爾河碼頭', line: '輕軌或步行 15 分鐘', direction: 'MAMCS', alighting: '當代藝術博物館' } },
+                { time: '下午', title: '當代藝術博物館 (MAMCS)', type: 'art', icon: 'camera', desc: '參觀當代藝術博物館，在頂樓露台咖啡廳遠眺沃邦攔河壩。', locationDetails: { address: '1 Pl. Hans-Jean-Arp, 67000 Strasbourg' } },
+                { time: '結束', title: '返回 Airbnb 休息', type: 'transport', icon: 'home', desc: '博物館距離住處很近，可輕鬆步行返回。', transportDetails: { boarding: '當代藝術博物館', line: '步行 5-10 分鐘', direction: '斯特拉斯堡 Airbnb', alighting: '斯特拉斯堡 Airbnb' } }
             ]},
             { day: 'Day 6', date: '7月28 (二)', city: '盧森堡', events: [
-                { time: '上午', title: '火車前往盧森堡', type: 'transport', icon: 'train', desc: '搭乘跨國 TGV 列車前往盧森堡。', isLong: true, transportDetails: { boarding: 'Strasbourg-Ville', line: 'TGV INOUI', direction: 'Luxembourg', alighting: 'Luxembourg Gare' } },
-                { time: '13:00', title: '前往 Airbnb (Check-in)', type: 'transport', icon: 'bus', desc: '抵達後搭乘免費公車/輕軌前往住處放行李。', transportDetails: { boarding: 'Luxembourg Gare', line: '免費市區公車/步行', direction: 'Rue Michel Rodange', alighting: 'Airbnb (Rue Michel Rodange)' } },
-                { time: '14:00', title: '前往市中心', type: 'transport', icon: 'footprints', desc: '安頓後步行前往老城區。', transportDetails: { boarding: 'Airbnb', line: '市區步行', direction: '老城區', alighting: '康尼徐走廊' } },
-                { time: '下午', title: '康尼徐走廊 & 貝克要塞', type: 'nature', icon: 'map-pin', desc: '漫步「歐洲最美陽台」，參觀世界遺產地下隧道。', locationDetails: { address: 'Chemin de la Corniche, 1948 Luxembourg' } },
-                { time: '18:30', title: '步行至兵器廣場', type: 'transport', icon: 'footprints', desc: '從峽谷景觀區悠閒步行至市中心廣場。', transportDetails: { boarding: '康尼徐走廊', line: '市區步行', direction: '市中心', alighting: 'Place d\'Armes 兵器廣場' } },
-                { time: '晚上', title: 'Summer in the City', type: 'festival', icon: 'music', desc: '前往【兵器廣場】享受免費戶外爵士音樂會。', locationDetails: { address: 'Place d\'Armes, 1136 Luxembourg' } },
-                { time: '22:00', title: '返回 Airbnb', type: 'transport', icon: 'footprints', desc: '音樂會結束後步行返回民宿。', transportDetails: { boarding: '兵器廣場', line: '步行', direction: '民宿方向', alighting: 'Airbnb' } }
+                { time: '早上', title: '退房與前往車站', type: 'transport', icon: 'footprints', desc: '辦理退房，帶著行李步行至斯特拉斯堡車站準備跨國。', transportDetails: { boarding: '斯特拉斯堡 Airbnb', line: '步行 10-15 分鐘', direction: '車站', alighting: 'Strasbourg-Ville' } },
+                { time: '上午', title: '火車前往盧森堡', type: 'transport', icon: 'train', desc: '搭乘跨國火車前往盧森堡（約 2 小時）。', isLong: true, transportDetails: { boarding: 'Strasbourg-Ville', line: 'TGV INOUI', direction: 'Luxembourg', alighting: 'Luxembourg Gare' } },
+                { time: '抵達', title: 'Airbnb 寄放行李', type: 'transport', icon: 'luggage', desc: '抵達盧森堡，步行至車站附近的 Airbnb 寄放行李。', transportDetails: { boarding: 'Luxembourg Gare', line: '步行 5-8 分鐘', direction: '盧森堡 Airbnb', alighting: '盧森堡 Airbnb' } },
+                { time: '中午', title: '搭公車至舊城區', type: 'transport', icon: 'bus', desc: '利用盧森堡全國免費大眾運輸，從住處搭公車或輕軌前往舊城區。', transportDetails: { boarding: '盧森堡 Airbnb', line: '市區公車/輕軌 (免費)', direction: '舊城區', alighting: '康尼徐走廊' } },
+                { time: '下午', title: '康尼徐走廊 & 貝克要塞', type: 'nature', icon: 'map-pin', desc: '漫步「歐洲最美陽台」康尼徐走廊俯瞰峽谷，參觀世界遺產貝克要塞地下隧道。', locationDetails: { address: 'Chemin de la Corniche, 1948 Luxembourg' } },
+                { time: '傍晚', title: '散步至兵器廣場', type: 'transport', icon: 'footprints', desc: '從要塞漫步回市中心的兵器廣場準備參與音樂節。', transportDetails: { boarding: '貝克要塞', line: '步行 10 分鐘', direction: '兵器廣場', alighting: 'Place d\'Armes' } },
+                { time: '晚上', title: 'Summer in the City', type: 'festival', icon: 'music', desc: '前往兵器廣場享受 "Summer in the City" 的免費戶外爵士音樂會。', locationDetails: { address: 'Place d\'Armes, 1136 Luxembourg' } },
+                { time: '結束', title: '返回 Airbnb 休息', type: 'transport', icon: 'home', desc: '活動結束後，搭乘免費公車或輕軌返回車站附近的 Airbnb。', transportDetails: { boarding: 'Hamilius 轉運站', line: '輕軌或公車 (免費)', direction: '盧森堡 Airbnb', alighting: '盧森堡 Airbnb' } }
+            ]},
+            { day: 'Day 7', date: '7月29 (三)', city: '盧森堡', events: [
+                { time: '早上', title: '從 Airbnb 出發', type: 'transport', icon: 'footprints', desc: '從住處步行至盧森堡車站 (Luxembourg Gare)。', transportDetails: { boarding: '盧森堡 Airbnb', line: '步行 5-8 分鐘', direction: '車站', alighting: 'Luxembourg Gare' } },
+                { time: '上午', title: '搭輕軌至歐洲區', type: 'transport', icon: 'train', desc: '從車站搭乘免費輕軌穿越紅橋前往現代化的歐洲區。', transportDetails: { boarding: 'Luxembourg Gare', line: '輕軌 Tram T1', direction: '歐洲區', alighting: 'MUDAM 博物館' } },
+                { time: '上午', title: 'MUDAM 現代藝術博物館', type: 'art', icon: 'image', desc: '參觀貝聿銘設計的 MUDAM 現代藝術博物館。', locationDetails: { address: '3 Park Drai Eechelen, 1499 Clausen Luxembourg' } },
+                { time: '中午', title: '全景電梯下至舊城', type: 'transport', icon: 'footprints', desc: '搭乘 Pfaffenthal 全景透明電梯回到舊城區與峽谷底部。', transportDetails: { boarding: '歐洲區', line: '透明電梯與步行', direction: '舊城區', alighting: '大公府周邊' } },
+                { time: '下午', title: '大公府 & Grund 區', type: 'culture', icon: 'building', desc: '參觀大公府，傍晚漫步至峽谷底部的 Grund 區沿河散步。', locationDetails: { address: 'Grund, Luxembourg' } },
+                { time: '結束', title: '返回 Airbnb 休息', type: 'transport', icon: 'home', desc: '搭乘 Grund 區的公共景觀電梯回到上城，再轉公車或步行返回住處。', transportDetails: { boarding: 'Grund 區', line: '景觀電梯 + 公車', direction: '盧森堡 Airbnb', alighting: '盧森堡 Airbnb' } }
+            ]},
+            { day: 'Day 8', date: '7月30 (四)', city: '布魯塞爾', events: [
+                { time: '早上', title: '退房與前往車站', type: 'transport', icon: 'footprints', desc: '辦理退房，步行至盧森堡車站準備搭車前往比利時。', transportDetails: { boarding: '盧森堡 Airbnb', line: '步行 5-8 分鐘', direction: '車站', alighting: 'Luxembourg Gare' } },
+                { time: '上午', title: '火車前往布魯塞爾', type: 'transport', icon: 'train', desc: '搭乘火車前往比利時布魯塞爾（約 3 小時）。', isLong: true, transportDetails: { boarding: 'Luxembourg Gare', line: 'IC 火車', direction: 'Bruxelles', alighting: 'Bruxelles-Midi' } },
+                { time: '抵達', title: '前往飯店寄放行李', type: 'transport', icon: 'luggage', desc: '抵達南站，轉乘路面電車或公車前往 Sablon 區的飯店寄放行李。', transportDetails: { boarding: 'Bruxelles-Midi', line: '地鐵或路面電車', direction: 'Sablon 區', alighting: '布魯塞爾飯店' } },
+                { time: '中午', title: '前往大廣場', type: 'transport', icon: 'footprints', desc: '從飯店悠閒步行前往布魯塞爾的心臟地帶。', transportDetails: { boarding: '布魯塞爾飯店', line: '步行 10-15 分鐘', direction: '市中心', alighting: '大廣場' } },
+                { time: '下午', title: '布魯塞爾大廣場 & 尿尿小童', type: 'culture', icon: 'building', desc: '直奔世界最美布魯塞爾大廣場欣賞巴洛克建築，探訪尿尿小童。', locationDetails: { address: 'Grote Markt, 1000 Brussel' } },
+                { time: '傍晚', title: '前往拱廊街', type: 'transport', icon: 'footprints', desc: '從大廣場周邊步行前往聖休伯特拱廊街。', transportDetails: { boarding: '尿尿小童', line: '步行 5 分鐘', direction: '拱廊街', alighting: '聖休伯特拱廊街' } },
+                { time: '傍晚', title: '拱廊街 & 修道院啤酒', type: 'relax', icon: 'beer', desc: '逛聖休伯特拱廊街頂級巧克力，晚間至 Delirium Café 品嚐修道院啤酒。', locationDetails: { address: 'Imp. de la Fidélité 4, 1000 Bruxelles' } },
+                { time: '晚上', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '從市中心步行或搭乘公車返回 Sablon 區的飯店休息。', transportDetails: { boarding: '市中心', line: '步行約 15 分鐘', direction: '飯店', alighting: '布魯塞爾飯店' } }
+            ]},
+            { day: 'Day 9', date: '7月31 (五)', city: '布魯塞爾', events: [
+                { time: '早上', title: '從飯店出發', type: 'transport', icon: 'footprints', desc: '從飯店出發，步行前往鄰近的比利時皇家美術博物館。', transportDetails: { boarding: '布魯塞爾飯店', line: '步行 5 分鐘', direction: '皇家美術博物館', alighting: '皇家美術博物館' } },
+                { time: '上午', title: '比利時皇家美術博物館', type: 'art', icon: 'palette', desc: '造訪比利時皇家美術博物館，欣賞超現實主義大師馬格利特的魔幻畫作。', locationDetails: { address: 'Rue de la Régence 3, 1000 Bruxelles' } },
+                { time: '中午', title: '前往漫畫博物館', type: 'transport', icon: 'footprints', desc: '穿越市區，步行前往新藝術風格的漫畫博物館。', transportDetails: { boarding: '皇家美術博物館', line: '步行 15 分鐘', direction: '漫畫博物館', alighting: '比利時漫畫藝術博物館' } },
+                { time: '下午', title: '比利時漫畫藝術博物館', type: 'culture', icon: 'book', desc: '參觀新藝術風格建築內的比利時漫畫藝術博物館（藍精靈與丁丁的故鄉）。', locationDetails: { address: 'Rue des Sables 20, 1000 Bruxelles' } },
+                { time: '結束', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '搭乘路面電車或漫步返回 Sablon 區的飯店。', transportDetails: { boarding: '漫畫博物館', line: '路面電車或步行', direction: '飯店', alighting: '布魯塞爾飯店' } }
+            ]},
+            { day: 'Day 10', date: '8月1 (六)', city: '阿姆斯特丹', events: [
+                { time: '早上', title: '退房與前往車站', type: 'transport', icon: 'train', desc: '辦理退房，前往布魯塞爾南站搭乘歐洲之星。', transportDetails: { boarding: '布魯塞爾飯店', line: '路面電車/地鐵', direction: '車站', alighting: 'Bruxelles-Midi' } },
+                { time: '上午', title: 'Eurostar 跨國火車', type: 'transport', icon: 'train', desc: '搭乘 Eurostar 前往阿姆斯特丹（約 2 小時）。', isLong: true, transportDetails: { boarding: 'Bruxelles-Midi', line: 'Eurostar', direction: 'Amsterdam Centraal', alighting: 'Amsterdam Centraal' } },
+                { time: '抵達', title: '前往飯店寄放行李', type: 'transport', icon: 'luggage', desc: '抵達中央車站後，搭乘公車(Bus 22)或路面電車前往東區的飯店寄放行李。', transportDetails: { boarding: 'Amsterdam Centraal', line: '公車 22', direction: 'Cruquiusweg', alighting: '阿姆斯特丹飯店' } },
+                { time: '中午', title: '前往運河區', type: 'transport', icon: 'train', desc: '從飯店搭車回到市中心，前往運河遊行熱區。', transportDetails: { boarding: '阿姆斯特丹飯店', line: '公車轉路面電車', direction: '王子運河', alighting: 'Prinsengracht' } },
+                { time: '中下午', title: '世界同志大遊行 (運河遊行)', type: 'festival', icon: 'flag', desc: '迎接 2026 世界同志大遊行最高潮，在王子運河兩岸感受全城狂歡。', locationDetails: { address: 'Prinsengracht, Amsterdam' } },
+                { time: '傍晚', title: '散步至市區廣場', type: 'transport', icon: 'footprints', desc: '遊行結束後，步行前往市區廣場周邊參與派對。', transportDetails: { boarding: '王子運河', line: '步行 10 分鐘', direction: '水壩廣場', alighting: '市區各廣場' } },
+                { time: '晚上', title: '市區露天派對', type: 'relax', icon: 'music', desc: '隨意漫步於市區各廣場的露天派對，體驗荷蘭極致自由的文化。', locationDetails: { address: 'Amsterdam City Centre' } },
+                { time: '深夜', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '派對結束後，搭乘夜間巴士或路面電車返回東區飯店。', transportDetails: { boarding: '市中心', line: '公車/路面電車', direction: '飯店', alighting: '阿姆斯特丹飯店' } }
+            ]},
+            { day: 'Day 11', date: '8月2 (日)', city: '阿姆斯特丹', events: [
+                { time: '早上', title: '從飯店出發', type: 'transport', icon: 'bus', desc: '從飯店搭乘公車或路面電車前往博物館廣場區。', transportDetails: { boarding: '阿姆斯特丹飯店', line: '公車轉路面電車', direction: '博物館廣場', alighting: 'Museumplein' } },
+                { time: '上午', title: '荷蘭國家博物館', type: 'art', icon: 'image', desc: '參觀荷蘭國家博物館，一睹林布蘭《夜巡》真跡（需提早預約）。', locationDetails: { address: 'Museumstraat 1, 1071 XX Amsterdam' } },
+                { time: '中午', title: '散步至馮德爾公園', type: 'transport', icon: 'footprints', desc: '參觀完博物館後，步行至旁邊的馮德爾公園放鬆。', transportDetails: { boarding: '國家博物館', line: '步行 5 分鐘', direction: '馮德爾公園', alighting: 'Vondelpark' } },
+                { time: '下午', title: '馮德爾公園', type: 'nature', icon: 'sun', desc: '在馮德爾公園草地上野餐、曬太陽。', locationDetails: { address: 'Vondelpark, Amsterdam' } },
+                { time: '傍晚', title: '前往梵谷博物館', type: 'transport', icon: 'footprints', desc: '從公園散步回博物館廣場，準備參觀梵谷博物館。', transportDetails: { boarding: 'Vondelpark', line: '步行 5 分鐘', direction: '博物館廣場', alighting: '梵谷博物館' } },
+                { time: '傍晚', title: '梵谷博物館', type: 'art', icon: 'palette', desc: '造訪梵谷博物館，欣賞《向日葵》等傳世名作。', locationDetails: { address: 'Museumplein 6, 1071 DJ Amsterdam' } },
+                { time: '晚上', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '從博物館廣場搭乘大眾運輸返回東區飯店。', transportDetails: { boarding: 'Museumplein', line: '路面電車轉公車', direction: '飯店', alighting: '阿姆斯特丹飯店' } }
+            ]},
+            { day: 'Day 12', date: '8月3 (一)', city: '阿姆斯特丹', events: [
+                { time: '早上', title: '從飯店出發', type: 'transport', icon: 'bus', desc: '搭乘公車前往市中心，展開舊城區探索。', transportDetails: { boarding: '阿姆斯特丹飯店', line: '公車 22', direction: '市中心', alighting: '市區周邊' } },
+                { time: '上午', title: '九街 (De Negen Straatjes)', type: 'culture', icon: 'shopping-bag', desc: '逛文青獨立小店與咖啡館聚集的九街。', locationDetails: { address: 'De Negen Straatjes, Amsterdam' } },
+                { time: '中午', title: '散步至安妮之家', type: 'transport', icon: 'footprints', desc: '沿著運河步行前往安妮之家。', transportDetails: { boarding: '九街', line: '步行 5 分鐘', direction: '安妮之家', alighting: '安妮之家' } },
+                { time: '下午', title: '安妮之家', type: 'culture', icon: 'book', desc: '參觀具歷史意義的安妮之家（需提早數月預約）。', locationDetails: { address: 'Westermarkt 20, 1016 GV Amsterdam' } },
+                { time: '傍晚', title: '前往遊船碼頭', type: 'transport', icon: 'footprints', desc: '步行前往中央車站周邊的遊船碼頭報到。', transportDetails: { boarding: '安妮之家', line: '步行 15 分鐘', direction: '中央車站', alighting: '遊船碼頭' } },
+                { time: '傍晚', title: '黃昏運河遊船', type: 'nature', icon: 'ship', desc: '預約黃昏運河遊船，在微風與橋樑燈光下享受經典水都夜景。', locationDetails: { address: 'Amsterdam Canals' } },
+                { time: '結束', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '從中央車站搭乘公車快速返回東區飯店。', transportDetails: { boarding: 'Amsterdam Centraal', line: '公車 22', direction: '飯店', alighting: '阿姆斯特丹飯店' } }
+            ]},
+            { day: 'Day 13', date: '8月4 (二)', city: '阿姆斯特丹', events: [
+                { time: '早上', title: '前往北區渡輪碼頭', type: 'transport', icon: 'bus', desc: '從飯店搭公車至中央車站，轉搭前往北區的免費渡輪。', transportDetails: { boarding: '阿姆斯特丹飯店', line: '公車轉渡輪', direction: '中央車站', alighting: 'Amsterdam Centraal' } },
+                { time: '上午', title: '搭乘免費渡輪', type: 'transport', icon: 'ship', desc: '在中央車站後站搭乘 F4 免費渡輪前往北區。', transportDetails: { boarding: 'Amsterdam Centraal', line: '免費渡輪 (F4 線)', direction: 'NDSM', alighting: 'NDSM 碼頭' } },
+                { time: '全天', title: 'NDSM 舊造船廠', type: 'art', icon: 'palette', desc: '逛歐洲最大廢棄工廠改建的文創聚落與塗鴉聖地，並在 Pllek 貨櫃餐廳的沙灘上放鬆。', locationDetails: { address: 'NDSM-Plein 28, 1033 WB Amsterdam' } },
+                { time: '傍晚', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '搭乘渡輪回到中央車站後，轉乘公車返回東區飯店。', transportDetails: { boarding: 'NDSM 碼頭', line: '渡輪轉公車', direction: '飯店', alighting: '阿姆斯特丹飯店' } }
+            ]},
+            { day: 'Day 14', date: '8月5 (三)', city: '柏林', events: [
+                { time: '早上', title: '退房與前往車站', type: 'transport', icon: 'bus', desc: '辦理退房，帶著滿滿回憶搭車前往阿姆斯特丹中央車站。', transportDetails: { boarding: '阿姆斯特丹飯店', line: '公車 22', direction: '車站', alighting: 'Amsterdam Centraal' } },
+                { time: '上午', title: '火車前往柏林', type: 'transport', icon: 'train', desc: '搭乘火車前往德國首都柏林（車程約 6 小時，在車上放鬆休息）。', isLong: true, transportDetails: { boarding: 'Amsterdam Centraal', line: 'IC / ICE', direction: 'Berlin Hbf', alighting: 'Berlin Hbf' } },
+                { time: '抵達', title: '前往飯店寄放行李', type: 'transport', icon: 'luggage', desc: '抵達柏林車站後，步行即可抵達緊鄰車站的 AMANO ROMY 飯店寄放行李。', transportDetails: { boarding: 'Berlin Hbf', line: '步行 3-5 分鐘', direction: '飯店', alighting: '柏林飯店' } },
+                { time: '下午', title: '前往滕珀爾霍夫', type: 'transport', icon: 'train', desc: '放好行李，搭乘 S-Bahn 或 U-Bahn 前往馬戲節會場。', transportDetails: { boarding: '柏林飯店', line: 'S-Bahn / U-Bahn', direction: 'Tempelhof', alighting: 'Tempelhofer Feld' } },
+                { time: '下午', title: '柏林馬戲節開幕', type: 'festival', icon: 'ticket', desc: '前往滕珀爾霍夫機場舊址參加一年一度柏林馬戲節開幕日。', locationDetails: { address: 'Tempelhofer Feld, Berlin' } },
+                { time: '傍晚', title: '散步至戶外市集', type: 'transport', icon: 'footprints', desc: '在廣大的舊機場園區內步行前往戶外文創市集。', transportDetails: { boarding: '馬戲節主帳篷', line: '步行 5 分鐘', direction: '戶外市集區', alighting: '市集區' } },
+                { time: '晚上', title: '馬戲節文創市集', type: 'relax', icon: 'wind', desc: '逛馬戲節戶外文創市集，在巨大舊機場跑道上吹著夏夜涼風。', locationDetails: { address: 'Tempelhofer Feld, Berlin' } },
+                { time: '結束', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '搭乘 U-Bahn 轉乘 S-Bahn 回到柏林中央車站，步行回飯店。', transportDetails: { boarding: 'Tempelhof', line: 'U-Bahn 轉 S-Bahn', direction: 'Berlin Hbf', alighting: '柏林飯店' } }
+            ]},
+            { day: 'Day 15', date: '8月6 (四)', city: '柏林', events: [
+                { time: '早上', title: '從飯店出發', type: 'transport', icon: 'footprints', desc: '從飯店散步或搭乘 S-Bahn 前往博物館島。', transportDetails: { boarding: '柏林飯店', line: 'S-Bahn 或步行 15 分', direction: '博物館島', alighting: 'Museum Island' } },
+                { time: '上午', title: '博物館島 & 柏林大教堂', type: 'culture', icon: 'landmark', desc: '造訪世界文化遺產博物館島（推薦佩加蒙或新博物館）與柏林大教堂。', locationDetails: { address: 'Museum Island, Berlin' } },
+                { time: '中午', title: '前往東邊畫廊', type: 'transport', icon: 'train', desc: '從哈克雪市場站搭乘 S-Bahn 前往東邊畫廊。', transportDetails: { boarding: 'Hackescher Markt', line: 'S-Bahn (S3/S5/S7/S9)', direction: 'Ostbahnhof', alighting: '東邊畫廊' } },
+                { time: '下午', title: '東邊畫廊', type: 'art', icon: 'paintbrush', desc: '漫步東邊畫廊，欣賞 1.3 公里長的舊柏林圍牆露天塗鴉藝術。', locationDetails: { address: 'Mühlenstraße 3-100, 10243 Berlin' } },
+                { time: '傍晚', title: '漫步至 Holzmarkt 25', type: 'transport', icon: 'footprints', desc: '沿著施普雷河畔步行前往文創廢木村。', transportDetails: { boarding: '東邊畫廊', line: '步行 10 分鐘', direction: 'Holzmarkt 25', alighting: 'Holzmarkt 25' } },
+                { time: '傍晚', title: 'Holzmarkt 25 文創廢木村', type: 'relax', icon: 'beer', desc: '至施普雷河畔的文創廢木村，體驗柏林隨性的河畔酒吧文化。', locationDetails: { address: 'Holzmarktstraße 25, 10243 Berlin' } },
+                { time: '晚上', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '從 Ostbahnhof 搭乘 S-Bahn 直達柏林中央車站，步行回飯店。', transportDetails: { boarding: 'Ostbahnhof', line: 'S-Bahn 直達', direction: 'Berlin Hbf', alighting: '柏林飯店' } }
+            ]},
+            { day: 'Day 16', date: '8月7 (五)', city: '柏林', events: [
+                { time: '早上', title: '從飯店出發', type: 'transport', icon: 'train', desc: '從柏林中央車站搭乘一站 U5 或 S-Bahn 前往布蘭登堡門。', transportDetails: { boarding: 'Berlin Hbf', line: 'U-Bahn (U5)', direction: 'Brandenburger Tor', alighting: 'Brandenburger Tor' } },
+                { time: '上午', title: '布蘭登堡門 & 猶太人紀念碑', type: 'culture', icon: 'building', desc: '參觀必到布蘭登堡門與歐洲被害猶太人紀念碑。', locationDetails: { address: 'Pariser Platz, 10117 Berlin' } },
+                { time: '中午', title: '前往哈克雪庭院', type: 'transport', icon: 'train', desc: '搭乘 S-Bahn 前往充滿本土設計小店的哈克雪庭院。', transportDetails: { boarding: 'Brandenburger Tor', line: 'S-Bahn', direction: 'Hackescher Markt', alighting: '哈克雪庭院' } },
+                { time: '下午', title: '哈克雪庭院 (Hackesche Höfe)', type: 'culture', icon: 'shopping-bag', desc: '逛哈克雪庭院，探索柏林本土設計師品牌的服飾、文具與藝廊。', locationDetails: { address: 'Rosenthaler Str. 40-41, 10178 Berlin' } },
+                { time: '結束', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '搭乘 S-Bahn 返回柏林中央車站，步行回飯店休息。', transportDetails: { boarding: 'Hackescher Markt', line: 'S-Bahn', direction: 'Berlin Hbf', alighting: '柏林飯店' } }
+            ]},
+            { day: 'Day 17', date: '8月8 (六)', city: '波茲坦', events: [
+                { time: '早上', title: '從飯店出發', type: 'transport', icon: 'footprints', desc: '從飯店步行至柏林中央車站準備搭車至近郊。', transportDetails: { boarding: '柏林飯店', line: '步行 3-5 分鐘', direction: '車站', alighting: 'Berlin Hbf' } },
+                { time: '上午', title: '搭城鐵前往波茲坦', type: 'transport', icon: 'train', desc: '搭乘 S-Bahn S7 線前往近郊波茲坦。', transportDetails: { boarding: 'Berlin Hbf', line: 'S-Bahn (S7)', direction: 'Potsdam', alighting: 'Potsdam Hbf' } },
+                { time: '大半天', title: '波茲坦無憂宮', type: 'nature', icon: 'leaf', desc: '前往近郊波茲坦，參觀普魯士國王的夏宮無憂宮，欣賞絕美階梯式葡萄園與法式花園。', locationDetails: { address: 'Maulbeerallee, 14469 Potsdam' } },
+                { time: '下午', title: '返回蒂爾加滕', type: 'transport', icon: 'train', desc: '搭乘 S-Bahn 返回柏林市區的蒂爾加滕公園。', transportDetails: { boarding: 'Potsdam Hbf', line: 'S-Bahn (S7)', direction: 'Tiergarten', alighting: 'Tiergarten 站' } },
+                { time: '下午', title: '蒂爾加滕公園散步', type: 'nature', icon: 'tree-pine', desc: '回到柏林市區，在巨大的蒂爾加滕公園或啤酒花園悠閒散步。', locationDetails: { address: 'Großer Tiergarten, Berlin' } },
+                { time: '結束', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '從 Tiergarten 站搭乘 S-Bahn 返回柏林中央車站，步行回飯店。', transportDetails: { boarding: 'Tiergarten', line: 'S-Bahn', direction: 'Berlin Hbf', alighting: '柏林飯店' } }
+            ]},
+            { day: 'Day 18', date: '8月9 (日)', city: '慕尼黑', events: [
+                { time: '早上', title: '退房與前往車站', type: 'transport', icon: 'footprints', desc: '辦理退房，輕鬆步行至柏林中央車站搭乘高鐵。', transportDetails: { boarding: '柏林飯店', line: '步行 3-5 分鐘', direction: '車站', alighting: 'Berlin Hbf' } },
+                { time: '上午', title: '高鐵前往慕尼黑', type: 'transport', icon: 'train', desc: '搭乘 ICE 高鐵前往南德慕尼黑（約 4 小時）。', isLong: true, transportDetails: { boarding: 'Berlin Hbf', line: 'ICE', direction: 'München Hbf', alighting: 'München Hbf' } },
+                { time: '抵達', title: '前往飯店寄放行李', type: 'transport', icon: 'luggage', desc: '抵達後，步行至車站附近的 Schwan Locke 飯店寄放行李。', transportDetails: { boarding: 'München Hbf', line: '步行 5-8 分鐘', direction: '飯店', alighting: '慕尼黑飯店' } },
+                { time: '下午', title: '前往瑪利亞廣場', type: 'transport', icon: 'train', desc: '從飯店步行至車站，轉乘 S-Bahn 前往慕尼黑市中心。', transportDetails: { boarding: '慕尼黑飯店', line: 'S-Bahn', direction: '市中心', alighting: 'Marienplatz' } },
+                { time: '下午', title: '瑪利亞廣場 & 穀物市場', type: 'culture', icon: 'map', desc: '拜訪核心瑪利亞廣場看新市政廳壁鐘表演，隨後逛穀物市場生活廚房。', locationDetails: { address: 'Marienplatz, 80331 München' } },
+                { time: '傍晚', title: '搭 U-Bahn 至英國花園', type: 'transport', icon: 'train', desc: '搭乘地鐵前往英國花園看城市衝浪。', transportDetails: { boarding: 'Marienplatz', line: 'U-Bahn (U3/U6)', direction: '英國花園', alighting: 'Universität' } },
+                { time: '傍晚', title: '英國花園 & 中國塔', type: 'relax', icon: 'beer', desc: '去英國花園看艾斯巴赫河城市衝浪，並在中國塔啤酒花園享受南德傳統管樂與節慶感。', locationDetails: { address: 'Englischer Garten, Munich' } },
+                { time: '晚上', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '搭乘 U-Bahn 轉乘回慕尼黑中央車站，步行回飯店休息。', transportDetails: { boarding: 'Universität', line: 'U-Bahn 轉乘', direction: 'München Hbf', alighting: '慕尼黑飯店' } }
+            ]},
+            { day: 'Day 19', date: '8月10 (一)', city: '慕尼黑', events: [
+                { time: '早上', title: '從飯店出發', type: 'transport', icon: 'footprints', desc: '從飯店步行至車站周邊，準備搭乘路面電車。', transportDetails: { boarding: '慕尼黑飯店', line: '步行 5-8 分鐘', direction: '車站周邊', alighting: 'Karlsplatz' } },
+                { time: '上午', title: '前往寧芬堡宮', type: 'transport', icon: 'train', desc: '搭乘 17 號路面電車前往國王夏宮。', transportDetails: { boarding: '市區 (Karlsplatz)', line: '路面電車 (Tram 17)', direction: '寧芬堡宮', alighting: 'Schloss Nymphenburg' } },
+                { time: '上午', title: '寧芬堡宮', type: 'culture', icon: 'castle', desc: '參觀國王夏宮寧芬堡宮，在廣闊的天鵝湖畔花園漫步。', locationDetails: { address: 'Schloß Nymphenburg 1, 80638 München' } },
+                { time: '中午', title: '轉乘至藝術區', type: 'transport', icon: 'train', desc: '搭乘路面電車轉乘前往老繪畫陳列館所在的藝術區。', transportDetails: { boarding: 'Schloss Nymphenburg', line: '路面電車 (17 轉 27)', direction: '藝術區', alighting: 'Pinakotheken' } },
+                { time: '下午', title: '老繪畫陳列館', type: 'art', icon: 'palette', desc: '前往藝術區拜訪老繪畫陳列館，欣賞達文西、林布蘭等大師真跡。', locationDetails: { address: 'Barer Str. 27, 80333 München' } },
+                { time: '傍晚', title: '前往皇家啤酒屋', type: 'transport', icon: 'footprints', desc: '搭乘路面電車或漫步前往老城區的 HB 啤酒屋。', transportDetails: { boarding: 'Pinakotheken', line: '路面電車轉步行', direction: '皇家啤酒屋', alighting: 'Hofbräuhaus' } },
+                { time: '晚上', title: '皇家啤酒屋 (HB)', type: 'relax', icon: 'utensils', desc: '在老字號皇家啤酒屋享用經典巴伐利亞烤豬腳。', locationDetails: { address: 'Platzl 9, 80331 München' } },
+                { time: '結束', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '飽餐後，搭乘 S-Bahn 回慕尼黑中央車站，步行回飯店休息。', transportDetails: { boarding: 'Marienplatz', line: 'S-Bahn 或步行', direction: '飯店', alighting: '慕尼黑飯店' } }
+            ]},
+            { day: 'Day 20', date: '8月11 (二)', city: '國王湖', events: [
+                { time: '早上', title: '從飯店出發', type: 'transport', icon: 'footprints', desc: '從飯店步行至慕尼黑中央車站，準備搭乘火車前往山區。', transportDetails: { boarding: '慕尼黑飯店', line: '步行 5-8 分鐘', direction: '車站', alighting: 'München Hbf' } },
+                { time: '上午', title: '火車轉公車至國王湖', type: 'transport', icon: 'bus', desc: '搭乘區域火車至 Berchtesgaden，再轉乘 841 號公車抵達國王湖。', transportDetails: { boarding: 'München Hbf', line: '火車轉 841 公車', direction: '國王湖', alighting: 'Königssee' } },
+                { time: '全天', title: '國王湖 & 上湖仙境', type: 'nature', icon: 'mountain', desc: '遠離都會前往德國最美高山湖泊國王湖。搭乘靜音電動船聆聽山谷小號迴音，在聖巴多羅買禮拜堂下船，並健行至最深處宛如仙境的上湖 (Obersee)。', locationDetails: { address: 'Königssee, 83471 Schönau am Königssee' } },
+                { time: '傍晚', title: '搭車返回慕尼黑', type: 'transport', icon: 'train', desc: '依原路線搭乘公車轉區域火車返回慕尼黑市區。', transportDetails: { boarding: 'Königssee', line: '841 公車轉火車', direction: '慕尼黑', alighting: 'München Hbf' } },
+                { time: '晚上', title: '返回飯店休息', type: 'transport', icon: 'bed', desc: '抵達慕尼黑中央車站後，步行回飯店休息，整理行囊。', transportDetails: { boarding: 'München Hbf', line: '步行 5-8 分鐘', direction: '飯店', alighting: '慕尼黑飯店' } }
+            ]},
+            { day: 'Day 21', date: '8月12 (三)', city: '慕尼黑', events: [
+                { time: '早上', title: '退房與寄放行李', type: 'transport', icon: 'luggage', desc: '在飯店辦理退房，並將行李寄放在櫃台。', transportDetails: { boarding: '慕尼黑飯店', line: '大廳', direction: '飯店櫃台', alighting: '慕尼黑飯店' } },
+                { time: '上午', title: '市區最後採買', type: 'culture', icon: 'shopping-bag', desc: '在慕尼黑市區進行最後的藥妝、伴手禮採買。', locationDetails: { address: 'Kaufingerstraße, Munich' } },
+                { time: '中午', title: '返回飯店領取行李', type: 'transport', icon: 'luggage', desc: '結束採買後，步行回飯店領取寄放的行李。', transportDetails: { boarding: '市區', line: '步行', direction: '飯店', alighting: '慕尼黑飯店' } },
+                { time: '隨後', title: '前往機場', type: 'transport', icon: 'train', desc: '帶著行李步行至車站，搭乘 S-Bahn 前往慕尼黑機場準備搭機。', transportDetails: { boarding: 'München Hbf', line: 'S-Bahn (S1/S8)', direction: '慕尼黑機場', alighting: 'München Airport' } },
+                { time: '班機', title: '搭機返港', type: 'transport', icon: 'plane', desc: '搭乘班機帶著滿滿回憶返回溫暖的家。', isLong: true, transportDetails: { boarding: 'München (MUC)', line: 'Flight', direction: 'Hong Kong', alighting: 'Hong Kong (HKG)' } }
             ]}
-            // 為了保持範例長度，省略 Day 7 到 Day 21，您可以根據相同的結構補齊。
         ];
 
         const FESTIVALS = [
@@ -156,7 +285,11 @@
         const STAYS = [
             { city: '弗萊堡', name: '弗賴堡阿達吉奧公寓酒店', enName: 'Aparthotel Adagio Access Freiburg', address: 'Eugen-Martin-Straße 1, 79106 Freiburg im Breisgau, 德國', ref: '73454568416017', checkIn: { date: '7月23 (四)', time: '15:00' }, checkOut: { date: '7月25 (六)', time: '11:00' }, type: 'hotel' },
             { city: '斯特拉斯堡', name: 'Airbnb：史特拉斯堡的旅居', enName: '', address: '17 Rue de Molsheim, 67000 Strasbourg, 法國', ref: '', checkIn: { date: '7月25 (六)', time: '17:00' }, checkOut: { date: '7月28 (二)', time: '11:00' }, type: 'airbnb' },
-            { city: '盧森堡', name: 'Airbnb：盧森堡的旅居', enName: '', address: '35 Rue Michel Rodange, 2430 Luxembourg, 盧森堡', ref: '', checkIn: { date: '7月28 (二)', time: '15:00' }, checkOut: { date: '7月30 (四)', time: '10:00' }, type: 'airbnb' }
+            { city: '盧森堡', name: 'Airbnb：盧森堡的旅居', enName: '', address: '35 Rue Michel Rodange, 2430 Luxembourg, 盧森堡', ref: '', checkIn: { date: '7月28 (二)', time: '15:00' }, checkOut: { date: '7月30 (四)', time: '10:00' }, type: 'airbnb' },
+            { city: '布魯塞爾', name: '薩伯隆 9 酒店', enName: '9Hotel Sablon', address: 'Rue De La Paille 2-8, Brussels, 1000 比利時', ref: '73471630642462', checkIn: { date: '7月30 (四)', time: '15:00' }, checkOut: { date: '8月1 (六)', time: '12:00' }, type: 'hotel' },
+            { city: '阿姆斯特丹', name: '阿姆斯特丹the niu Fender假日酒店', enName: 'Holiday Inn - the niu, Fender Amsterdam by IHG', address: 'Cruquiusweg 61, Amsterdam, 1019AT 荷蘭', ref: '73471646708835', checkIn: { date: '8月1 (六)', time: '15:00' }, checkOut: { date: '8月5 (三)', time: '12:00' }, type: 'hotel' },
+            { city: '柏林', name: 'AMANO 旗下 ROMY 酒店', enName: 'Hotel ROMY by AMANO', address: 'Invalidenstraße 53, Berlin, 10557 德國', ref: '73496562393808', checkIn: { date: '8月5 (三)', time: '15:00' }, checkOut: { date: '8月9 (日)', time: '12:00' }, type: 'hotel' },
+            { city: '慕尼黑', name: '施萬洛克酒店', enName: 'Schwan Locke', address: 'Landwehrstraße 75, Munich, BY, 80336 德國', ref: '73497991452402', checkIn: { date: '8月9 (日)', time: '15:00' }, checkOut: { date: '8月12 (三)', time: '11:00' }, type: 'hotel' }
         ];
 
         const TABS = [
@@ -177,10 +310,37 @@
         function getNavAddress(name, city) {
             if (!name) return '';
             const n = name.toLowerCase();
-            if (n.includes('strasbourg-ville') || n.includes('strasbourg ville')) return 'Strasbourg Ville train station';
-            if (n.includes('adagio') || n.includes('阿達吉奧') || (n.includes('飯店') && city === '弗萊堡')) return 'Eugen-Martin-Straße 1, 79106 Freiburg im Breisgau, 德國';
-            if ((n.includes('airbnb') || n.includes('民宿') || n.includes('住處')) && (city === '斯特拉斯堡' || city === '科爾馬')) return '17 Rue de Molsheim, 67000 Strasbourg, 法國';
-            if ((n.includes('airbnb') || n.includes('民宿') || n.includes('住處')) && city === '盧森堡') return '35 Rue Michel Rodange, 2430 Luxembourg, 盧森堡';
+            
+            // 史特拉斯堡 & 科爾馬 Airbnb (7月25 - 7月28)
+            if (n.includes('斯特拉斯堡 airbnb') || (n.includes('airbnb') && (city === '斯特拉斯堡' || city === '科爾馬'))) {
+                return '17 Rue de Molsheim, 67000 Strasbourg, 法國';
+            }
+            // 盧森堡 Airbnb (7月28 - 7月30)
+            if (n.includes('盧森堡 airbnb') || (n.includes('airbnb') && city === '盧森堡')) {
+                return '35 Rue Michel Rodange, 2430 Luxembourg, 盧森堡';
+            }
+            
+            // 飯店精確對應
+            if (n.includes('adagio') || n.includes('阿達吉奧') || n.includes('弗萊堡飯店') || (n.includes('飯店') && city === '弗萊堡')) {
+                return 'Eugen-Martin-Straße 1, 79106 Freiburg im Breisgau, 德國';
+            }
+            if (n.includes('9hotel') || n.includes('布魯塞爾飯店') || (n.includes('飯店') && city === '布魯塞爾')) {
+                return 'Rue De La Paille 2-8, Brussels, 1000 比利時';
+            }
+            if (n.includes('holiday inn') || n.includes('阿姆斯特丹飯店') || (n.includes('飯店') && city === '阿姆斯特丹')) {
+                return 'Cruquiusweg 61, Amsterdam, 1019AT 荷蘭';
+            }
+            if (n.includes('romy') || n.includes('柏林飯店') || (n.includes('飯店') && (city === '柏林' || city === '波茲坦'))) {
+                return 'Invalidenstraße 53, Berlin, 10557 德國';
+            }
+            if (n.includes('schwan locke') || n.includes('慕尼黑飯店') || (n.includes('飯店') && (city === '慕尼黑' || city === '國王湖'))) {
+                return 'Landwehrstraße 75, Munich, BY, 80336 德國';
+            }
+
+            if (n.includes('strasbourg-ville') || n.includes('strasbourg ville')) {
+                return 'Strasbourg Ville train station';
+            }
+
             return name;
         }
 
